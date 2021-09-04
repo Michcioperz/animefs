@@ -22,9 +22,8 @@ async def download_file(
 
 async def download_all(target_directory, urls):
     async with aiohttp.ClientSession() as session:
-        await asyncio.gather(
-            *[download_file(session, target_directory, url) for url in urls]
-        )
+        for url in urls:
+            await download_file(session, target_directory, url)
 
 
 class Command(BaseCommand):
