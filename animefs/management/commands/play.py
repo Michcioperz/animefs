@@ -47,4 +47,6 @@ class Command(BaseCommand):
                 universal_newlines=True,
             ) as torrentfs:
                 time.sleep(5)
-                subprocess.call("mpv --keep-open *", shell=True, cwd=mount_dir)
+                subprocess.call(
+                    ["mpv", "--keep-open", mount_dir], universal_newlines=True
+                )
